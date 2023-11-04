@@ -1,43 +1,53 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { StatusCodes } from "http-status-codes";
 import useAllGuardsByIdEquip from "@/hooks/useGuards";
 import LoadingGuardPage from "./components/LoadingGuardPage";
-import ErrorGuardsPage from "./components/ErrorGuardsPage";
-import GuardsTable from "./components/GuardTable/GuardsTable";
-import { Container } from "@chakra-ui/react";
-import NewGuardForm from "./components/NewGuardForm";
+import GuardsTable from "./components/GuardsTable";
+import { Container, Flex } from "@chakra-ui/react";
+import GuardFilterTable from "./components/GuardFilterTable";
+import NewGuardModal from "./components/NewGuardModal";
 
 const GuardsPage = () => {
+  const [firstLoading, setFirstLoading] = useState(true);
   const { error, loading } = useAllGuardsByIdEquip();
 
-  if (loading) return <LoadingGuardPage />;
+  useEffect(() => {
+    if (firstLoading && !loading) {
+      setFirstLoading(false);
+    }
+  }, [firstLoading, loading]);
 
-  if (error) {
-    return (
-      <ErrorGuardsPage
-        msg={
-          error.status === StatusCodes.FORBIDDEN
-            ? "No tiene privilegios para poder ver este recurso"
-            : error.message
-        }
-      />
-    );
-  }
+  //   if (error) {
+  //     return (
+  //       <ErrorGuardsPage
+  //         msg={
+  //           error.status === StatusCodes.FORBIDDEN
+  //             ? "No tiene privilegios para poder ver este recurso"
+  //             : error.message
+  //         }
+  //       />
+  //     );
+  //   }
 
   return (
     <>
-      <Helmet>
-        <title>Guards | GuardsApp</title>
-      </Helmet>
       <Container maxW={"6xl"}>
-        {/* <Grid gridTemplateColumns={"1fr auto"}> */}
-        {/* <GridItem> */}
-        <GuardsTable />
-        {/* </GridItem> */}
-        {/* <GridItem> */}
-        <NewGuardForm />
-        {/* </GridItem>
-        </Grid> */}
+        {loading && firstLoading ? (
+          <LoadingGuardPage />
+        ) : (
+          <>
+            <Helmet>
+              <title>Guards | GuardsApp</title>
+            </Helmet>
+            <Flex flexDir={"column"} rowGap={6}>
+              <GuardFilterTable />
+              <Flex justifyContent={"flex-end"}>
+                <NewGuardModal />
+              </Flex>
+              <GuardsTable />
+            </Flex>
+          </>
+        )}
       </Container>
     </>
   );

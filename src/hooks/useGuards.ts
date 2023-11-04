@@ -10,6 +10,7 @@ import { useShallow } from "zustand/react/shallow";
 const useAllGuardsByIdEquip = () => {
   const idEquip = useAuthStore((state) => state.user?.id_equipo);
   const setGuards = useGuardStore((state) => state.setGuards);
+  const setLoadingGuards = useGuardStore((state) => state.setLoading);
   const dates = useGuardStore(useShallow((state) => state));
   const { data, error, isFetching } = useQuery<Guard[], ResponseAxiosError>({
     queryKey: ["guards", idEquip, dates.initialDate, dates.finalDate],
@@ -18,6 +19,10 @@ const useAllGuardsByIdEquip = () => {
         ? GuardService.getAll(idEquip, dates.initialDate, dates.finalDate)
         : [],
   });
+
+  useEffect(() => {
+    setLoadingGuards(isFetching);
+  }, [isFetching]);
 
   useEffect(() => {
     if (data) setGuards(data);

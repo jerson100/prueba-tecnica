@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { LoadingTable } from "@/components/common/loadings";
+import LoadingFilter from "./LoadingFilter";
+import { Flex, Skeleton } from "@chakra-ui/react";
 
 const LoadingGuardPage = () => {
   return (
@@ -9,7 +11,13 @@ const LoadingGuardPage = () => {
         <meta name="description" content="List of guards" />
         <meta name="author" content="Jerson Ramírez Ortiz" />
       </Helmet>
-      <LoadingTable />
+      <Flex flexDirection={"column"} rowGap={6}>
+        <LoadingFilter />
+        <Flex justifyContent={"flex-end"}>
+          <Skeleton height={"40px"} width="131px" />
+        </Flex>
+        <LoadingTable rows={6} />
+      </Flex>
     </>
   );
 };

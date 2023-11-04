@@ -10,18 +10,17 @@ import {
 } from "@chakra-ui/react";
 import { Field, Formik } from "formik";
 import { useShallow } from "zustand/react/shallow";
-import { GuardsFilterSchema } from "../../../schemasValidation";
+import { GuardsFilterSchema } from "../schemasValidation";
 // import { useQueryClient } from "@tanstack/react-query";
 
 const GuardFilterTable = () => {
   const { initialDate, finalDate, loading, setDates } = useGuardStore(
     useShallow((state) => state)
   );
+  //   console.log(loading);
   return (
     <Formik
-      onSubmit={(values) => {
-        setDates(values);
-      }}
+      onSubmit={setDates}
       initialValues={{
         initialDate: initialDate,
         finalDate: finalDate,
@@ -30,11 +29,7 @@ const GuardFilterTable = () => {
     >
       {({ handleSubmit, errors, touched }) => (
         <form onSubmit={handleSubmit}>
-          <Grid
-            gridTemplateColumns={"1fr 1fr auto"}
-            gap={"4"}
-            alignItems={"flex-end"}
-          >
+          <Grid gridTemplateColumns={"1fr 1fr auto"} gap={"4"}>
             <GridItem>
               <FormControl
                 isInvalid={!!errors.initialDate && touched.initialDate}
@@ -66,7 +61,12 @@ const GuardFilterTable = () => {
               </FormControl>
             </GridItem>
             <GridItem>
-              <Button isLoading={loading} type="submit">
+              <Button
+                colorScheme="blue"
+                isLoading={loading}
+                type="submit"
+                mt={8}
+              >
                 Filtrar
               </Button>
             </GridItem>
