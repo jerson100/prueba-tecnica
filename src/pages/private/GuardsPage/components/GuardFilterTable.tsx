@@ -11,13 +11,11 @@ import {
 import { Field, Formik } from "formik";
 import { useShallow } from "zustand/react/shallow";
 import { GuardsFilterSchema } from "../schemasValidation";
-// import { useQueryClient } from "@tanstack/react-query";
 
 const GuardFilterTable = () => {
   const { initialDate, finalDate, loading, setDates } = useGuardStore(
     useShallow((state) => state)
   );
-  //   console.log(loading);
   return (
     <Formik
       onSubmit={setDates}
@@ -34,7 +32,7 @@ const GuardFilterTable = () => {
               <FormControl
                 isInvalid={!!errors.initialDate && touched.initialDate}
               >
-                <FormLabel htmlFor="initialDate">Fecha Guardia</FormLabel>
+                <FormLabel htmlFor="initialDate">Fecha Inicial</FormLabel>
                 <Field
                   as={Input}
                   type="date"
@@ -48,7 +46,7 @@ const GuardFilterTable = () => {
             </GridItem>
             <GridItem>
               <FormControl isInvalid={!!errors.finalDate && touched.finalDate}>
-                <FormLabel htmlFor="finalDate">Fecha Guardia</FormLabel>
+                <FormLabel htmlFor="finalDate">Fecha Final</FormLabel>
                 <Field
                   as={Input}
                   type="date"

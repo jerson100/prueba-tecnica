@@ -2,6 +2,7 @@ import AuthStorage from "@/lib/authStorage";
 import axios, { AxiosError } from "axios";
 import ResponseAxiosError from "lib/ResponseAxiosError";
 import { BASE_URL } from "./api.const";
+import { StatusCodes } from "http-status-codes";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -22,6 +23,15 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
     if (error.response) {
+      //Analizando la api dada por el backend se observa que no se manejan los códigos de estado
+      //adecuadamente siguiendo la arquitectura rest.
+      //Por ejemplo cuando se vence el token me devuelve error 500 - Internal Server Error
+      //que en realidad debería de devolver código 401 - Unauthorized, por lo tanto
+      //voy a redireccionar al usuario al login cuando reciba un error 500 como si fuera un 401 - Unauthorized
+      if (error.response.status === StatusCodes.INTERNAL_SERVER_ERROR) {
+        AuthStorage.removeToken();
+        window.location.href = "/login";
+      }
       const {
         response: { data, status },
       } = error;
