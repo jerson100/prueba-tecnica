@@ -8,11 +8,20 @@ import {
 } from "@chakra-ui/react";
 import Sidebar from "./components/Sidebar";
 import HeaderNav from "./components/HeaderNav";
+import { motion } from "framer-motion";
+import { MainLayoutContainerVariants } from "./mainlayout.variants";
 
 const MainPageLayout: FC<PropsWithChildren> = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.10", "gray.900")}>
+    <Box
+      as={motion.div}
+      initial="hidden"
+      animate="visible"
+      variants={MainLayoutContainerVariants}
+      minH="100vh"
+      bg={useColorModeValue("gray.10", "gray.900")}
+    >
       <Sidebar
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}

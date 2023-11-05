@@ -19,6 +19,8 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown, FiMenu } from "react-icons/fi";
 import DefaultProfileImage from "@/assets/images/default-profile.jpg";
+import { motion } from "framer-motion";
+import { AuthorVariants, UserMenuVariants } from "../mainlayout.variants";
 
 interface HeaderNavProps extends FlexProps {
   onOpen: () => void;
@@ -51,7 +53,7 @@ const HeaderNav = ({ onOpen, ...rest }: HeaderNavProps) => {
         icon={<FiMenu />}
       />
 
-      <Text>
+      <Text as={motion.p} variants={AuthorVariants}>
         By
         <Link
           href="https://jersonramirez.studio"
@@ -74,7 +76,11 @@ const HeaderNav = ({ onOpen, ...rest }: HeaderNavProps) => {
         Logo
       </Text> */}
 
-      <HStack spacing={{ base: "0", md: "6" }}>
+      <HStack
+        as={motion.div}
+        variants={UserMenuVariants}
+        spacing={{ base: "0", md: "6" }}
+      >
         <ThemeSwitcher />
         <Flex alignItems={"center"}>
           <Menu>
