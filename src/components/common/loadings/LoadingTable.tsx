@@ -12,7 +12,7 @@ const LoadingTable: FC<LoadingTableProps> = ({
   rows = 6,
   columns = 5,
   heightRow = "50px",
-  heightColumn = "42px",
+  heightColumn = "30px",
 }) => {
   return (
     <Flex flexDirection={"column"} rowGap={4}>

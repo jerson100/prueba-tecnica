@@ -21,7 +21,7 @@ const LoadingFilter = () => {
         />
         <Skeleton height={"40px"} />
       </Flex>
-      <Skeleton width="74px" height={"40px"} />
+      <Skeleton width="98px" height={"40px"} />
     </Stack>
   );
 };
