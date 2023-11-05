@@ -25,13 +25,12 @@ export const TableRowVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 50,
+    scale: 0,
   },
   visible: {
     opacity: 1,
     y: 0,
-    // transition: {
-    //   duration: 5,
-    // },
+    scale: 1,
   },
   exit: {
     opacity: 0,

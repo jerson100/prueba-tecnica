@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { LoadingTable } from "@/components/common/loadings";
 import useGuardStore from "@/stores/guards.store";
-import { useTable, usePagination } from "react-table";
+import { useTable, usePagination, Column } from "react-table";
 import TablePaginator from "./TablePaginator";
 import { Guard } from "@/types/guard";
 import GuardStatus from "./GuardStatus";
@@ -21,26 +21,26 @@ import {
   TableRowVariants,
 } from "../animation.variants";
 
-const columns: any = [
+const columns: Column<Guard>[] = [
   {
     Header: "Id",
-    accessor: (data: Guard) => data.id_guardia,
+    accessor: (data) => data.id_guardia,
   },
   {
     Header: "Agente",
-    accessor: (data: Guard) => data.agente.nom_agente,
+    accessor: (data) => data.agente.nom_agente,
   },
   {
     Header: "Fecha Guardia",
-    accessor: (data: Guard) => data.fecha_guardia,
+    accessor: (data) => data.fecha_guardia,
   },
   {
     Header: "Fecha Registro",
-    accessor: (data: Guard) => data.fecha_registro_guardia,
+    accessor: (data) => data.fecha_registro_guardia,
   },
   {
     Header: "Estado",
-    accessor: (data: Guard) => data.estado_guardia,
+    accessor: (data) => data.estado_guardia,
     Cell: (col: any) => {
       return <GuardStatus status={col.row.original.estado_guardia} />;
     },
@@ -95,21 +95,21 @@ const GuardsTable = () => {
   }
   return (
     <>
-      <AnimatePresence mode="wait">
-        <Table {...getTableProps()}>
-          <Thead>
-            {headerGroups.map((headerGroup) => (
-              <Tr {...headerGroup.getHeaderGroupProps()}>
-                <Th>Nº</Th>
-                {headerGroup.headers.map((column) => (
-                  <Th {...column.getHeaderProps()}>
-                    {/* <Th {...column.getHeaderProps(column.getSortByToggleProps())}> */}
-                    {column.render("Header")}
-                  </Th>
-                ))}
-              </Tr>
-            ))}
-          </Thead>
+      <Table {...getTableProps()}>
+        <Thead>
+          {headerGroups.map((headerGroup) => (
+            <Tr {...headerGroup.getHeaderGroupProps()}>
+              <Th>Nº</Th>
+              {headerGroup.headers.map((column) => (
+                <Th {...column.getHeaderProps()}>
+                  {/* <Th {...column.getHeaderProps(column.getSortByToggleProps())}> */}
+                  {column.render("Header")}
+                </Th>
+              ))}
+            </Tr>
+          ))}
+        </Thead>
+        <AnimatePresence mode="wait">
           <Tbody
             {...getTableBodyProps()}
             as={motion.tbody}
@@ -137,8 +137,8 @@ const GuardsTable = () => {
               );
             })}
           </Tbody>
-        </Table>
-      </AnimatePresence>
+        </AnimatePresence>
+      </Table>
       <TablePaginator
         canPreviousPage={canPreviousPage}
         canNextPage={canNextPage}
