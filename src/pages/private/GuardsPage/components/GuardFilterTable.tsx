@@ -11,6 +11,7 @@ import {
 import { Field, Formik } from "formik";
 import { useShallow } from "zustand/react/shallow";
 import { GuardsFilterSchema } from "../schemasValidation";
+import { SearchIcon } from "@chakra-ui/icons";
 
 const GuardFilterTable = () => {
   const { initialDate, finalDate, loading, setDates } = useGuardStore(
@@ -64,6 +65,7 @@ const GuardFilterTable = () => {
                 isLoading={loading}
                 type="submit"
                 mt={8}
+                rightIcon={<SearchIcon />}
               >
                 Filtrar
               </Button>

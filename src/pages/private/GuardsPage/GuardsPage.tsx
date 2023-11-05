@@ -6,6 +6,8 @@ import GuardsTable from "./components/GuardsTable";
 import { Container, Flex } from "@chakra-ui/react";
 import GuardFilterTable from "./components/GuardFilterTable";
 import NewGuardModal from "./components/NewGuardModal";
+import ErrorGuardsPage from "./components/ErrorGuardsPage";
+import { StatusCodes } from "http-status-codes";
 
 const GuardsPage = () => {
   const [firstLoading, setFirstLoading] = useState(true);
@@ -17,17 +19,17 @@ const GuardsPage = () => {
     }
   }, [firstLoading, loading]);
 
-  //   if (error) {
-  //     return (
-  //       <ErrorGuardsPage
-  //         msg={
-  //           error.status === StatusCodes.FORBIDDEN
-  //             ? "No tiene privilegios para poder ver este recurso"
-  //             : error.message
-  //         }
-  //       />
-  //     );
-  //   }
+  if (error) {
+    return (
+      <ErrorGuardsPage
+        msg={
+          error.status === StatusCodes.FORBIDDEN
+            ? "No tiene privilegios para poder ver este recurso"
+            : error.message
+        }
+      />
+    );
+  }
 
   return (
     <>
