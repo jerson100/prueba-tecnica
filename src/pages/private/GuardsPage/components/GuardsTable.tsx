@@ -72,7 +72,7 @@ const GuardsTable = () => {
     {
       columns: columns,
       data: guards,
-      initialState: { pageIndex: 0 },
+      initialState: { pageIndex: 0, pageSize: 9 },
     },
     // useSortBy,
     usePagination
