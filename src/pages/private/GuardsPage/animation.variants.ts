@@ -8,7 +8,15 @@ export const TableContainerVariants: Variants = {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+      staggerDirection: -1,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -24,5 +32,9 @@ export const TableRowVariants: Variants = {
     // transition: {
     //   duration: 5,
     // },
+  },
+  exit: {
+    opacity: 0,
+    y: 50,
   },
 };

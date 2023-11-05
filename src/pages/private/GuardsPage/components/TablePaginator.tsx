@@ -46,18 +46,18 @@ const TablePaginator: FC<TablePaginatorProps> = ({
   return (
     <Flex justifyContent="space-between" m={4} alignItems="center">
       <Flex>
-        <Tooltip label="First Page">
+        <Tooltip label="Primera Página">
           <IconButton
             onClick={() => gotoPage(0)}
-            aria-label="First Page"
+            aria-label="Primera Página"
             isDisabled={!canPreviousPage}
             icon={<ArrowLeftIcon h={3} w={3} />}
             mr={4}
           />
         </Tooltip>
-        <Tooltip label="Previous Page">
+        <Tooltip label="Página anterior">
           <IconButton
-            aria-label="Previous Page"
+            aria-label="Página anterior"
             onClick={previousPage}
             isDisabled={!canPreviousPage}
             icon={<ChevronLeftIcon h={6} w={6} />}
@@ -67,16 +67,16 @@ const TablePaginator: FC<TablePaginatorProps> = ({
 
       <Flex alignItems="center">
         <Text flexShrink="0" mr={8}>
-          Page{" "}
+          Página{" "}
           <Text fontWeight="bold" as="span">
             {pageIndex + 1}
           </Text>{" "}
-          of{" "}
+          de{" "}
           <Text fontWeight="bold" as="span">
             {pageOptions.length}
           </Text>
         </Text>
-        <Text flexShrink="0">Go to page:</Text>{" "}
+        <Text flexShrink="0">Ir a:</Text>{" "}
         <NumberInput
           ml={2}
           mr={8}
@@ -104,24 +104,24 @@ const TablePaginator: FC<TablePaginatorProps> = ({
         >
           {[10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              Show {pageSize}
+              Mostrar {pageSize}
             </option>
           ))}
         </Select>
       </Flex>
 
       <Flex>
-        <Tooltip label="Next Page">
+        <Tooltip label="Siguiente Página">
           <IconButton
-            aria-label="Next Page"
+            aria-label="Siguiente Página"
             onClick={nextPage}
             isDisabled={!canNextPage}
             icon={<ChevronRightIcon h={6} w={6} />}
           />
         </Tooltip>
-        <Tooltip label="Last Page">
+        <Tooltip label="Última Página">
           <IconButton
-            aria-label="Last Page"
+            aria-label="Última Página"
             onClick={() => gotoPage(pageCount - 1)}
             isDisabled={!canNextPage}
             icon={<ArrowRightIcon h={3} w={3} />}

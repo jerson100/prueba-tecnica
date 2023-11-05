@@ -71,6 +71,7 @@ const GuardsTable = () => {
       data: guards,
       initialState: { pageIndex: 0 },
     },
+    // useSortBy,
     usePagination
   );
   if (loading) return <LoadingTable rows={4} columns={6} />;
@@ -94,27 +95,30 @@ const GuardsTable = () => {
   }
   return (
     <>
-      <AnimatePresence mode="popLayout">
-        <Table
-          {...getTableProps()}
-          as={motion.table}
-          variants={TableContainerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+      <AnimatePresence mode="wait">
+        <Table {...getTableProps()}>
           <Thead>
             {headerGroups.map((headerGroup) => (
               <Tr {...headerGroup.getHeaderGroupProps()}>
                 <Th>Nº</Th>
                 {headerGroup.headers.map((column) => (
                   <Th {...column.getHeaderProps()}>
+                    {/* <Th {...column.getHeaderProps(column.getSortByToggleProps())}> */}
                     {column.render("Header")}
                   </Th>
                 ))}
               </Tr>
             ))}
           </Thead>
-          <Tbody {...getTableBodyProps()}>
+          <Tbody
+            {...getTableBodyProps()}
+            as={motion.tbody}
+            variants={TableContainerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            key={pageIndex + pageSize}
+          >
             {page.map((row, i) => {
               prepareRow(row);
               return (
@@ -122,7 +126,6 @@ const GuardsTable = () => {
                   {...row.getRowProps()}
                   as={motion.tr}
                   variants={TableRowVariants}
-                  //   key={guard.id_guardia}
                 >
                   <Td>{i + 1}</Td>
                   {row.cells.map((cell) => {
