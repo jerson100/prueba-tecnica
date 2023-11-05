@@ -11,6 +11,11 @@ import {
 
 import Logo from "assets/images/logo.png";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
+import {
+  SignInGroupVariants,
+  SignInVariantsContainer,
+} from "./signIn.variants";
 
 const SignInPage = () => {
   return (
@@ -26,13 +31,41 @@ const SignInPage = () => {
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <Stack spacing={8} mx={"auto"} w={"full"} maxW={"sm"} py={12} px={6}>
+        <Stack
+          as={motion.div}
+          initial={"hidden"}
+          animate={"visible"}
+          variants={SignInVariantsContainer}
+          spacing={8}
+          mx={"auto"}
+          w={"full"}
+          maxW={"sm"}
+          py={12}
+          px={6}
+        >
           <Stack align={"center"}>
-            <Image maxWidth={"32"} src={Logo} alt="GuardiaApp Logo" />
-            <Heading as="h1" fontSize={"4xl"} textAlign={"center"}>
+            <Image
+              as={motion.img}
+              variants={SignInGroupVariants}
+              maxWidth={"32"}
+              src={Logo}
+              alt="GuardiaApp Logo"
+            />
+            <Heading
+              as={motion.h1}
+              variants={SignInGroupVariants}
+              fontSize={"4xl"}
+              textAlign={"center"}
+            >
               Iniciar Sesión
             </Heading>
-            <Text fontSize={"lg"} color={"gray.600"} align={"center"}>
+            <Text
+              as={motion.p}
+              variants={SignInGroupVariants}
+              fontSize={"lg"}
+              color={"gray.600"}
+              align={"center"}
+            >
               <TypeAnimation
                 // preRenderFirstString={true}
                 sequence={[
