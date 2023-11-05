@@ -4,7 +4,6 @@ import {
   CloseButton,
   Flex,
   Image,
-  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import NavItem from "./NavItem";
