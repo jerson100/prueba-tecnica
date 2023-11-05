@@ -26,24 +26,30 @@ const SignInPage = () => {
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <Stack spacing={8} mx={"auto"} w={"full"} maxW={"md"} py={12} px={6}>
+        <Stack spacing={8} mx={"auto"} w={"full"} maxW={"sm"} py={12} px={6}>
           <Stack align={"center"}>
             <Image maxWidth={"32"} src={Logo} alt="GuardiaApp Logo" />
             <Heading as="h1" fontSize={"4xl"} textAlign={"center"}>
               Iniciar Sesión
             </Heading>
-            <Text fontSize={"lg"} color={"gray.600"}>
+            <Text fontSize={"lg"} color={"gray.600"} align={"center"}>
               <TypeAnimation
                 // preRenderFirstString={true}
                 sequence={[
                   500,
-                  "Actitud positiva, resultados positivos. ✌️", // after 1000ms, this string will be rendered
+                  "Sé imparable, no inquebrantable. 💥",
                   2000,
-                  "La programación es el futuro. ✌️",
+                  "El éxito es la mejor venganza. 👊",
                   2000,
-                  "El futuro es ahora. ✌️",
+                  "Los sueños no expiran. 🌟",
                   2000,
-                  "Si lo puedes imaginar, lo puedes programar. ✌️", // initially rendered starting point
+                  "Transforma el dolor en poder. 💪",
+                  2000,
+                  "Perseverancia, tu gran aliada. 🚀",
+                  2000,
+                  "Rompe los límites, crea tu legado. 🌄",
+                  2000,
+                  "Miedo, solo una ilusión. Supéralo. 🦁",
                   500,
                 ]}
                 speed={75}
