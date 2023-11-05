@@ -12,6 +12,8 @@ import { Field, Formik } from "formik";
 import { useShallow } from "zustand/react/shallow";
 import { GuardsFilterSchema } from "../schemasValidation";
 import { SearchIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
+import { YVariants } from "../animation.variants";
 
 const GuardFilterTable = () => {
   const { initialDate, finalDate, loading, setDates } = useGuardStore(
@@ -29,7 +31,7 @@ const GuardFilterTable = () => {
       {({ handleSubmit, errors, touched }) => (
         <form onSubmit={handleSubmit}>
           <Grid gridTemplateColumns={"1fr 1fr auto"} gap={"4"}>
-            <GridItem>
+            <GridItem as={motion.div} variants={YVariants} custom={-1}>
               <FormControl
                 isInvalid={!!errors.initialDate && touched.initialDate}
               >
@@ -45,7 +47,7 @@ const GuardFilterTable = () => {
                 <FormErrorMessage>{errors.initialDate}</FormErrorMessage>
               </FormControl>
             </GridItem>
-            <GridItem>
+            <GridItem as={motion.div} variants={YVariants} custom={1}>
               <FormControl isInvalid={!!errors.finalDate && touched.finalDate}>
                 <FormLabel htmlFor="finalDate">Fecha Final</FormLabel>
                 <Field
@@ -59,7 +61,7 @@ const GuardFilterTable = () => {
                 <FormErrorMessage>{errors.finalDate}</FormErrorMessage>
               </FormControl>
             </GridItem>
-            <GridItem>
+            <GridItem as={motion.div} variants={YVariants} custom={-1}>
               <Button
                 colorScheme="blue"
                 isLoading={loading}

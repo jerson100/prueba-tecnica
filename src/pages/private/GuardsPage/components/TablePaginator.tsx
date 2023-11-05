@@ -102,7 +102,7 @@ const TablePaginator: FC<TablePaginatorProps> = ({
             setPageSize(Number(e.target.value));
           }}
         >
-          {[5, 10, 20, 30, 40, 50].map((pageSize) => (
+          {[9, 10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Mostrar {pageSize}
             </option>

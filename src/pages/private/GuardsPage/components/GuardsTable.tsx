@@ -2,6 +2,7 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
+  Box,
   Table,
   Tbody,
   Td,
@@ -104,50 +105,58 @@ const GuardsTable = () => {
   }
   return (
     <>
-      <Table {...getTableProps()}>
-        <Thead>
-          {headerGroups.map((headerGroup) => (
-            <Tr {...headerGroup.getHeaderGroupProps()}>
-              <Th>Nº</Th>
-              {headerGroup.headers.map((column) => (
-                <Th {...column.getHeaderProps()}>
-                  {/* <Th {...column.getHeaderProps(column.getSortByToggleProps())}> */}
-                  {column.render("Header")}
-                </Th>
-              ))}
-            </Tr>
-          ))}
-        </Thead>
-        <AnimatePresence mode="wait">
-          <Tbody
-            {...getTableBodyProps()}
-            as={motion.tbody}
-            variants={TableContainerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            key={pageIndex + pageSize}
-          >
-            {page.map((row, i) => {
-              prepareRow(row);
-              return (
-                <Tr
-                  {...row.getRowProps()}
-                  as={motion.tr}
-                  variants={TableRowVariants}
-                >
-                  <Td>{i + 1}</Td>
-                  {row.cells.map((cell) => {
-                    return (
-                      <Td {...cell.getCellProps()}>{cell.render("Cell")}</Td>
-                    );
-                  })}
-                </Tr>
-              );
-            })}
-          </Tbody>
-        </AnimatePresence>
-      </Table>
+      <Box
+        overflowX={{
+          base: "auto",
+          md: "hidden",
+        }}
+        overflowY={"hidden"}
+      >
+        <Table {...getTableProps()}>
+          <Thead>
+            {headerGroups.map((headerGroup) => (
+              <Tr {...headerGroup.getHeaderGroupProps()}>
+                <Th>Nº</Th>
+                {headerGroup.headers.map((column) => (
+                  <Th {...column.getHeaderProps()}>
+                    {/* <Th {...column.getHeaderProps(column.getSortByToggleProps())}> */}
+                    {column.render("Header")}
+                  </Th>
+                ))}
+              </Tr>
+            ))}
+          </Thead>
+          <AnimatePresence mode="wait">
+            <Tbody
+              {...getTableBodyProps()}
+              as={motion.tbody}
+              variants={TableContainerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              key={pageIndex + pageSize}
+            >
+              {page.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <Tr
+                    {...row.getRowProps()}
+                    as={motion.tr}
+                    variants={TableRowVariants}
+                  >
+                    <Td>{i + 1}</Td>
+                    {row.cells.map((cell) => {
+                      return (
+                        <Td {...cell.getCellProps()}>{cell.render("Cell")}</Td>
+                      );
+                    })}
+                  </Tr>
+                );
+              })}
+            </Tbody>
+          </AnimatePresence>
+        </Table>
+      </Box>
       <TablePaginator
         canPreviousPage={canPreviousPage}
         canNextPage={canNextPage}

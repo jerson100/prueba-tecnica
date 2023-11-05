@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import NewGuardForm from "./NewGuardForm";
+import { motion } from "framer-motion";
+import { XVariants } from "../animation.variants";
 
 const NewGuardModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -18,7 +20,13 @@ const NewGuardModal = () => {
 
   return (
     <>
-      <Button colorScheme="blue" onClick={onOpen}>
+      <Button
+        as={motion.button}
+        variants={XVariants}
+        custom={-1}
+        colorScheme="blue"
+        onClick={onOpen}
+      >
         Crear Guardia
       </Button>
       {/* <Button ml={4} ref={finalRef}>
