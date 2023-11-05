@@ -18,7 +18,7 @@ import useGuardStore from "@/stores/guards.store";
 import { useTable, usePagination, Column } from "react-table";
 import TablePaginator from "./TablePaginator";
 import { Guard } from "@/types/guard";
-import GuardStatus from "./GuardStatus";
+import GuardStatus from "../../../../components/common/GuardStatus";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   TableContainerVariants,
