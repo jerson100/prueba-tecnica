@@ -29,7 +29,8 @@
       "components/*": ["src/components/*"],
       "types/*": ["src/types/*"],
       "lib/*": ["src/lib/*"],
-      "public/*": ["public/*"]
+      "public/*": ["public/*"],
+      "assets/*": ["public/assets/*"]
     }
   },
   "include": ["src"],

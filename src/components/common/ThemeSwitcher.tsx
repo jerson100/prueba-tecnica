@@ -9,8 +9,8 @@ const ThemeSwitcher = () => {
       {colorMode === "dark" ? (
         <IconButton
           aria-label="dark"
-          bg="transparent"
-          fontSize="20px"
+          size="lg"
+          variant="ghost"
           icon={<FaSun />}
           onClick={toggleColorMode}
         />

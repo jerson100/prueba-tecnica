@@ -1,5 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import { LoadingTable } from "@/components/common/loadings";
+import {
+  LoadingTable,
+  LoadingTablePagination,
+} from "@/components/common/loadings";
 import LoadingFilter from "./LoadingFilter";
 import { Flex, Skeleton } from "@chakra-ui/react";
 
@@ -16,7 +19,8 @@ const LoadingGuardPage = () => {
         <Flex justifyContent={"flex-end"}>
           <Skeleton height={"40px"} width="131px" />
         </Flex>
-        <LoadingTable rows={6} />
+        <LoadingTable rows={8} />
+        <LoadingTablePagination />
       </Flex>
     </>
   );

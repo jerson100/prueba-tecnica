@@ -9,7 +9,10 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { LoadingTable } from "@/components/common/loadings";
+import {
+  LoadingTable,
+  LoadingTablePagination,
+} from "@/components/common/loadings";
 import useGuardStore from "@/stores/guards.store";
 import { useTable, usePagination, Column } from "react-table";
 import TablePaginator from "./TablePaginator";
@@ -74,7 +77,13 @@ const GuardsTable = () => {
     // useSortBy,
     usePagination
   );
-  if (loading) return <LoadingTable rows={4} columns={6} />;
+  if (loading)
+    return (
+      <>
+        <LoadingTable rows={8} />
+        <LoadingTablePagination />
+      </>
+    );
   if (guards.length === 0) {
     return (
       <Alert
