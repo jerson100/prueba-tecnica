@@ -4,15 +4,12 @@ export type DateFormat =
   | "dd-mm-yyyy"
   | "yyyy-mm-dd";
 
-export const getCurrentDayAndLastDayOfMonth = (format: DateFormat) => {
-  const currentDay = new Date();
-  const lastDay = new Date(
-    currentDay.getFullYear(),
-    currentDay.getMonth() + 1,
-    0
-  );
+export const getFirstDayAndLastDayOfMonth = (format: DateFormat) => {
+  const date = new Date();
+  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   return {
-    currentDay: formatDate(currentDay, format),
+    currentDay: formatDate(firstDay, format),
     lastDay: formatDate(lastDay, format),
   };
 };

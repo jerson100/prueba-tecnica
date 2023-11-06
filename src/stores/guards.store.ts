@@ -1,8 +1,8 @@
-import { getCurrentDayAndLastDayOfMonth } from "@/lib/date";
+import { getFirstDayAndLastDayOfMonth } from "@/lib/date";
 import { GuardStore } from "@/types/guard";
 import { create } from "zustand";
 
-const { currentDay, lastDay } = getCurrentDayAndLastDayOfMonth("yyyy-mm-dd");
+const { currentDay, lastDay } = getFirstDayAndLastDayOfMonth("yyyy-mm-dd");
 
 const INITIAL_STATE = {
   guards: [],
