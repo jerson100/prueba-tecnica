@@ -1,13 +1,12 @@
 import AuthStorage from "@/lib/authStorage";
 import axios, { AxiosError } from "axios";
 import ResponseAxiosError from "lib/ResponseAxiosError";
-import { BASE_URL } from "./api.const";
+import { BASE_URL, PROXY_URL } from "./api.const";
 import { StatusCodes } from "http-status-codes";
 
 //Tuve que crear un servidor proxy con nodejs para poder hacer las peticiones al backend
 //desde el frontend ya que el backend no tiene habilitado el cors.
-const PROXY_URL = "http://localhost:1554";
-// const PROXY_URL = "https://serverproxy.onrender.com";
+// const PROXY_URL = "http://localhost:1554";
 
 const axiosInstance = axios.create({
   baseURL: `${PROXY_URL}/${BASE_URL}`,

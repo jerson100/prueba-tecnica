@@ -5,9 +5,7 @@ import {
   Input,
   Stack,
   Button,
-  Text,
   useColorModeValue,
-  Link,
   FormErrorMessage,
   Flex,
 } from "@chakra-ui/react";

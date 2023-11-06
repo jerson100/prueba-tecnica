@@ -1,4 +1,5 @@
 export const BASE_URL = "https://opembpo.emeal.nttdata.com";
+export const PROXY_URL = "https://serverproxy.onrender.com";
 
 export const ENDPOINTS = {
   SIGN_IN: `/pre/validar_usuario`,
