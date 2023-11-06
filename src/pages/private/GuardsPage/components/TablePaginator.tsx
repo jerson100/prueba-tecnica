@@ -17,6 +17,8 @@ import {
   ChevronLeftIcon,
 } from "@chakra-ui/icons";
 import { FC } from "react";
+import { motion } from "framer-motion";
+import { YVariants } from "../animation.variants";
 
 interface TablePaginatorProps {
   gotoPage: (updater: number | ((pageIndex: number) => number)) => void;
@@ -45,7 +47,7 @@ const TablePaginator: FC<TablePaginatorProps> = ({
 }) => {
   return (
     <Flex justifyContent="space-between" m={4} alignItems="center">
-      <Flex>
+      <Flex as={motion.div} variants={YVariants} custom={-1}>
         <Tooltip label="Primera Página">
           <IconButton
             onClick={() => gotoPage(0)}
@@ -65,7 +67,7 @@ const TablePaginator: FC<TablePaginatorProps> = ({
         </Tooltip>
       </Flex>
 
-      <Flex alignItems="center">
+      <Flex as={motion.div} variants={YVariants} custom={1} alignItems="center">
         <Text flexShrink="0" mr={8}>
           Página{" "}
           <Text fontWeight="bold" as="span">
@@ -110,7 +112,7 @@ const TablePaginator: FC<TablePaginatorProps> = ({
         </Select>
       </Flex>
 
-      <Flex>
+      <Flex as={motion.div} variants={YVariants} custom={-1}>
         <Tooltip label="Siguiente Página">
           <IconButton
             aria-label="Siguiente Página"

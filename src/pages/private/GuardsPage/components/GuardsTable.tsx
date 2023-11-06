@@ -23,6 +23,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   TableContainerVariants,
   TableRowVariants,
+  YVariants,
 } from "../animation.variants";
 
 const columns: Column<Guard>[] = [
@@ -115,7 +116,12 @@ const GuardsTable = () => {
         <Table {...getTableProps()}>
           <Thead>
             {headerGroups.map((headerGroup) => (
-              <Tr {...headerGroup.getHeaderGroupProps()}>
+              <Tr
+                as={motion.tr}
+                variants={YVariants}
+                custom={-1}
+                {...headerGroup.getHeaderGroupProps()}
+              >
                 <Th>Nº</Th>
                 {headerGroup.headers.map((column) => (
                   <Th {...column.getHeaderProps()}>
