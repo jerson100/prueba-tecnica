@@ -32,6 +32,7 @@ const SignInPage = () => {
         bg={useColorModeValue("gray.50", "gray.800")}
       >
         <Stack
+          overflow={"hidden"}
           as={motion.div}
           initial={"hidden"}
           animate={"visible"}

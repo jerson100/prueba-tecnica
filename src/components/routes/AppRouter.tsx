@@ -4,6 +4,8 @@ import ProfilePage from "@/pages/private/ProfilePage";
 import PrivatePageWrapper from "../common/PrivatePageWrapper";
 import PublicPageWrapper from "../common/PublicPageWrapper";
 import GuardsPage from "@/pages/private/GuardsPage";
+import MembersPage from "@/pages/private/MembersPage";
+import NotFound from "../common/NotFound";
 
 const AppRouter = () => {
   return (
@@ -19,8 +21,10 @@ const AppRouter = () => {
         />
         <Route path="/" element={<PrivatePageWrapper />}>
           <Route index element={<GuardsPage />} />
-          <Route index path="/guards" element={<GuardsPage />} />
+          {/* <Route path="/guards" element={<GuardsPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/members" element={<MembersPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>

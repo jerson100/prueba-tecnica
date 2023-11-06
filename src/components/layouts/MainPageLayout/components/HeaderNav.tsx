@@ -7,7 +7,6 @@ import {
   FlexProps,
   HStack,
   IconButton,
-  Link,
   Menu,
   MenuButton,
   MenuDivider,
@@ -20,7 +19,8 @@ import {
 import { FiChevronDown, FiMenu } from "react-icons/fi";
 import DefaultProfileImage from "@/assets/images/default-profile.jpg";
 import { motion } from "framer-motion";
-import { AuthorVariants, UserMenuVariants } from "../mainlayout.variants";
+import { UserMenuVariants } from "../mainlayout.variants";
+import AuthorText from "@/components/common/AuthorText";
 
 interface HeaderNavProps extends FlexProps {
   onOpen: () => void;
@@ -53,19 +53,7 @@ const HeaderNav = ({ onOpen, ...rest }: HeaderNavProps) => {
         icon={<FiMenu />}
       />
 
-      <Text as={motion.p} variants={AuthorVariants}>
-        By
-        <Link
-          href="https://jersonramirez.studio"
-          isExternal
-          color="blue.500"
-          mx="2"
-          fontWeight={"bold"}
-        >
-          Jerson Ramírez Ortiz
-        </Link>
-        with ❤️
-      </Text>
+      <AuthorText />
       {/* 
       <Text
         display={{ base: "flex", md: "none" }}

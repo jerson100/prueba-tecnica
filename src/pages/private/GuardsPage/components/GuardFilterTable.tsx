@@ -30,7 +30,14 @@ const GuardFilterTable = () => {
     >
       {({ handleSubmit, errors, touched }) => (
         <form onSubmit={handleSubmit}>
-          <Grid gridTemplateColumns={"1fr 1fr auto"} gap={"4"}>
+          <Grid
+            gridTemplateColumns={{
+              base: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(2, 1fr) auto",
+            }}
+            gap={"4"}
+          >
             <GridItem as={motion.div} variants={YVariants} custom={-1}>
               <FormControl
                 isInvalid={!!errors.initialDate && touched.initialDate}
@@ -61,12 +68,24 @@ const GuardFilterTable = () => {
                 <FormErrorMessage>{errors.finalDate}</FormErrorMessage>
               </FormControl>
             </GridItem>
-            <GridItem as={motion.div} variants={YVariants} custom={-1}>
+            <GridItem
+              gridColumn={{
+                base: "1 / 2",
+                sm: "1 / span 2",
+                md: "3 / span 1",
+              }}
+              as={motion.div}
+              variants={YVariants}
+              custom={-1}
+            >
               <Button
                 colorScheme="blue"
                 isLoading={loading}
                 type="submit"
-                mt={8}
+                w={"full"}
+                mt={{
+                  md: 8,
+                }}
                 rightIcon={<SearchIcon />}
               >
                 Filtrar

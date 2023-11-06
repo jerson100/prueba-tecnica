@@ -113,7 +113,7 @@ const GuardsTable = () => {
         }}
         overflowY={"hidden"}
       >
-        <Table {...getTableProps()}>
+        <Table {...getTableProps()} variant={"striped"}>
           <Thead>
             {headerGroups.map((headerGroup) => (
               <Tr

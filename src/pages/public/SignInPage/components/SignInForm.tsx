@@ -9,6 +9,7 @@ import {
   useColorModeValue,
   Link,
   FormErrorMessage,
+  Flex,
 } from "@chakra-ui/react";
 import { Field, Formik } from "formik";
 import { SignInSchema } from "../SignInSchema.validation";
@@ -19,6 +20,7 @@ import {
   FormVariantsContainer,
   SignInGroupYVariants,
 } from "../signIn.variants";
+import AuthorText from "@/components/common/AuthorText";
 
 const INITIAL_VALUES = {
   username: "",
@@ -116,26 +118,9 @@ export default function SignInForm2() {
                   Acceder
                 </Button>
               </Stack>
-              <Stack pt={6}>
-                <Text
-                  align={"center"}
-                  as={motion.p}
-                  variants={SignInGroupYVariants}
-                  custom={-1}
-                >
-                  By
-                  <Link
-                    href="https://jersonramirez.studio"
-                    isExternal
-                    color="blue.500"
-                    mx="2"
-                    fontWeight={"bold"}
-                  >
-                    Jerson Ramírez Ortiz
-                  </Link>
-                  with ❤️
-                </Text>
-              </Stack>
+              <Flex justifyContent={"center"} pt={6}>
+                <AuthorText />
+              </Flex>
             </Stack>
           </form>
         )}

@@ -8,7 +8,8 @@ import {
 } from "@chakra-ui/react";
 import NavItem from "./NavItem";
 import { IconType } from "react-icons";
-import { FiHome } from "react-icons/fi";
+import { FaPeopleArrows } from "react-icons/fa";
+import { MdOutlineSecurity } from "react-icons/md";
 import Logo from "assets/images/logo.png";
 import { motion } from "framer-motion";
 import { SidebarVariants } from "../mainlayout.variants";
@@ -20,9 +21,13 @@ interface SidebarProps extends BoxProps {
 interface LinkItemProps {
   name: string;
   icon: IconType;
+  to: string;
 }
 
-const LinkItems: Array<LinkItemProps> = [{ name: "Guardias", icon: FiHome }];
+const LinkItems: Array<LinkItemProps> = [
+  { name: "Guardias", icon: MdOutlineSecurity, to: "/" },
+  { name: "Members", icon: FaPeopleArrows, to: "/members" },
+];
 
 const Sidebar = ({ onClose, ...rest }: SidebarProps) => {
   return (
@@ -42,13 +47,18 @@ const Sidebar = ({ onClose, ...rest }: SidebarProps) => {
         </Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      <Box as={motion.div} variants={SidebarVariants}>
+      <Flex
+        as={motion.div}
+        flexDir={"column"}
+        rowGap={4}
+        variants={SidebarVariants}
+      >
         {LinkItems.map((link) => (
-          <NavItem key={link.name} icon={link.icon}>
+          <NavItem key={link.name} icon={link.icon} to={link.to}>
             {link.name}
           </NavItem>
         ))}
-      </Box>
+      </Flex>
     </Box>
   );
 };

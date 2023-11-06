@@ -25,6 +25,10 @@ const NewGuardModal = () => {
         variants={XVariants}
         custom={-1}
         colorScheme="blue"
+        w={{
+          base: "100%",
+          md: "auto",
+        }}
         onClick={onOpen}
       >
         Crear Guardia

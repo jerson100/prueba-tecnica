@@ -2,7 +2,14 @@ import { Flex, Skeleton, SkeletonText, Stack } from "@chakra-ui/react";
 
 const LoadingFilter = () => {
   return (
-    <Stack spacing={4} direction={"row"} alignItems={"flex-end"}>
+    <Stack
+      spacing={4}
+      direction={{
+        base: "column",
+        md: "row",
+      }}
+      alignItems={{ base: "initial", md: "flex-end" }}
+    >
       <Flex flexDirection={"column"} gap={4} flex={1}>
         <SkeletonText
           noOfLines={1}
@@ -21,7 +28,13 @@ const LoadingFilter = () => {
         />
         <Skeleton height={"40px"} />
       </Flex>
-      <Skeleton width="98px" height={"40px"} />
+      <Skeleton
+        width={{
+          base: "100%",
+          md: "98px",
+        }}
+        height={"40px"}
+      />
     </Stack>
   );
 };

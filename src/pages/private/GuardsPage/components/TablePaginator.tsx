@@ -46,7 +46,20 @@ const TablePaginator: FC<TablePaginatorProps> = ({
   setPageSize,
 }) => {
   return (
-    <Flex justifyContent="space-between" m={4} alignItems="center">
+    <Flex
+      justifyContent="space-between"
+      flexDir={{
+        base: "column",
+        xl: "row",
+      }}
+      rowGap={4}
+      my={4}
+      mx={{
+        base: 0,
+        md: 4,
+      }}
+      alignItems="center"
+    >
       <Flex as={motion.div} variants={YVariants} custom={-1}>
         <Tooltip label="Primera Página">
           <IconButton
@@ -68,7 +81,13 @@ const TablePaginator: FC<TablePaginatorProps> = ({
       </Flex>
 
       <Flex as={motion.div} variants={YVariants} custom={1} alignItems="center">
-        <Text flexShrink="0" mr={8}>
+        <Text
+          flexShrink="0"
+          mr={{
+            base: 2,
+            md: 8,
+          }}
+        >
           Página{" "}
           <Text fontWeight="bold" as="span">
             {pageIndex + 1}
@@ -81,7 +100,10 @@ const TablePaginator: FC<TablePaginatorProps> = ({
         <Text flexShrink="0">Ir a:</Text>{" "}
         <NumberInput
           ml={2}
-          mr={8}
+          mr={{
+            base: 2,
+            md: 8,
+          }}
           w={28}
           min={1}
           max={pageOptions.length}

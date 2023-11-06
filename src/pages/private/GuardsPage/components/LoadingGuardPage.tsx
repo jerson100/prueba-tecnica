@@ -17,9 +17,15 @@ const LoadingGuardPage = () => {
       <Flex flexDirection={"column"} rowGap={6}>
         <LoadingFilter />
         <Flex justifyContent={"flex-end"}>
-          <Skeleton height={"40px"} width="131px" />
+          <Skeleton
+            height={"40px"}
+            width={{
+              base: "100%",
+              md: "131px",
+            }}
+          />
         </Flex>
-        <LoadingTable rows={8} />
+        <LoadingTable rows={8} columns={6} />
         <LoadingTablePagination />
       </Flex>
     </>
