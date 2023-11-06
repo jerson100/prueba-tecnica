@@ -4,8 +4,13 @@ import ResponseAxiosError from "lib/ResponseAxiosError";
 import { BASE_URL } from "./api.const";
 import { StatusCodes } from "http-status-codes";
 
+// const PROXY_URL = "http://localhost:1554";
+//Tuve que crear un servidor proxy con nodejs para poder hacer las peticiones al backend
+//desde el frontend ya que el backend no tiene habilitado el cors.
+const PROXY_URL = "https://serverproxy.onrender.com";
+
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: `${PROXY_URL}/${BASE_URL}`,
 });
 
 axiosInstance.interceptors.request.use(

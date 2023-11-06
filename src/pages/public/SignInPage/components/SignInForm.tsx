@@ -17,7 +17,6 @@ import InputPassword from "@/components/common/inputs/InputPassword";
 import { motion } from "framer-motion";
 import {
   FormVariantsContainer,
-  SignInGroupVariants,
   SignInGroupYVariants,
 } from "../signIn.variants";
 
